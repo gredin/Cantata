@@ -1,0 +1,7 @@
+parameters:
+#    gredin_cantata.example.class: Gredin\CantataBundle\Example
+
+services:
+#    gredin_cantata.example:
+#        class: %gredin_cantata.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
