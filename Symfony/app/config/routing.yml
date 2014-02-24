@@ -1,4 +1,3 @@
 gredin_cantata:
     resource: "@GredinCantataBundle/Resources/config/routing.yml"
     prefix:   /
-
