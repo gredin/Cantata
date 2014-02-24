@@ -2,6 +2,11 @@ gredin_cantata_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: GredinCantataBundle:Default:index }
 
+gredin_cantata_signup:
+  pattern: /signup
+  defaults: { _controller: GredinCantataBundle:Registration:signup }
+
 #_welcome:
 #    pattern:  /
 #    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+
