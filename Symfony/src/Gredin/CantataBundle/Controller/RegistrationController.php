@@ -12,7 +12,7 @@ class RegistrationController extends Controller
     public function signupAction()
     {
         $this->render(
-            'GredinCantataBundle:Registration:index.html.twig',
+            'GredinCantataBundle:Registration:signup.html.twig',
             array()
         );
     }
