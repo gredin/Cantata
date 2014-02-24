@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
      * Registration date
      *
      * @var \DateTime
