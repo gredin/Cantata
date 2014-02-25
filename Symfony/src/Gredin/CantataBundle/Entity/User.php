@@ -40,6 +40,40 @@ class User
      */
     protected $password;
 
+    //$this->registrationDate = new \DateTime();
+
+    /**
+     * Registration date
+     *
+     * @var \DateTime
+     *
+     * //@ORM\Column(type="datetime", nullable=false)
+     */
+    //protected $registrationDate;
+
+    /**
+     * Setter for RegistrationDate
+     *
+     * @param \DateTime $registrationDate
+     *
+     * @return User
+     */
+    /*public function setRegistrationDate($registrationDate)
+    {
+        $this->registrationDate = $registrationDate;
+        return $this;
+    }*/
+
+    /**
+     * Getter for RegistrationDate
+     *
+     * @return \DateTime
+     */
+    /*public function getRegistrationDate()
+    {
+        return $this->registrationDate;
+    }*/
+
     /**
      *
      */
