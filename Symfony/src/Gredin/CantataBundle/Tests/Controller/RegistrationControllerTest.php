@@ -1,6 +1,7 @@
 <?php
 
 namespace Gredin\CantataBundle\Tests\Controller;
+
 use Gredin\CantataBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -25,52 +26,77 @@ class RegistrationControllerTest extends WebTestCase
 
     private function generateRandomEmail()
     {
-        return uniqid() . '@email.com';
+        return uniqid() . '@functional-test.com';
+    }
+
+    private function generateRandomPassword()
+    {
+        return md5(uniqid());
     }
 
     public function provideUserDetails()
     {
-        return array(
-            array($this->generateRandomEmail(), 'password12345'),
-            array($this->generateRandomEmail(), 'password12345'),
-        );
+        $userData = array();
+
+        for ($i=0; $i<2; $i++) {
+            $userData[] = array($this->generateRandomEmail(), $this->generateRandomPassword());
+        }
+
+        return $userData;
     }
 
     /**
+     * Test sign up form
+     *
      * @return void
      *
      * @dataProvider provideUserDetails
      */
     public function testSignup($email, $password)
     {
-        /*
         $client = $this->createClient();
 
-        // sign up page
+        // request the sign up page
 
         $crawler = $client->request('GET', '/signup');
 
-        $this->assertGreaterThan(
-            0,
-            $crawler->filter('html:contains("form")')->count()
+        $this->assertTrue(
+            $client->getResponse()->isSuccessful()
         );
 
-        // sign up form
+        $this->assertEquals(
+            1,
+            $crawler->filter('form')->count()
+        );
 
+        // fill in the sign up form
 
-*/
-        // user creation
+        $form = $crawler->selectButton('Signup')->form();
+
+        $form->setValues(
+            array(
+                'user[email]' => $email,
+                'user[password]' => $password,
+            )
+        );
+
+        $crawler = $client->submit($form);
+
+        $this->assertEquals(
+            1,
+            $crawler->filter('html:contains("BRAVO")')->count()
+        );
+
+        // make sure the user was created
 
         $user = $this->em
             ->getRepository('GredinCantataBundle:User')
-            ->findBy(
+            ->findOneBy(
                 array(
-                    'email' => 'your@email.com',
+                    'email' => $email,
                 )
             );
 
         $this->assertTrue($user instanceof User);
-
-        $this->assertTrue(strlen($email) > 2);
     }
 }
