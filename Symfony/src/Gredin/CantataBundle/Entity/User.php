@@ -22,15 +22,6 @@ class User
     protected $id;
 
     /**
-     * Registration date
-     *
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=false)
-     */
-    protected $registrationDate;
-
-    /**
      * Email
      *
      * @var string
@@ -54,7 +45,7 @@ class User
      */
     public function __construct()
     {
-        $this->registrationDate = new \DateTime();
+
     }
 
     /**
@@ -101,28 +92,5 @@ class User
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Setter for RegistrationDate
-     *
-     * @param \DateTime $registrationDate
-     *
-     * @return User
-     */
-    public function setRegistrationDate($registrationDate)
-    {
-        $this->registrationDate = $registrationDate;
-        return $this;
-    }
-
-    /**
-     * Getter for RegistrationDate
-     *
-     * @return \DateTime
-     */
-    public function getRegistrationDate()
-    {
-        return $this->registrationDate;
     }
 }
