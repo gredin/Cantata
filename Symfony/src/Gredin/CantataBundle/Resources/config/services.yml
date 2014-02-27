@@ -1,7 +1,14 @@
 parameters:
-#    gredin_cantata.example.class: Gredin\CantataBundle\Example
+    gredin_cantata.logger.class: Gredin\CantataBundle\Services\Logger
+    gredin_cantata.logger.filename: 'log.txt'
+
+    gredin_cantata.registration.class: Gredin\CantataBundle\Services\Registration
 
 services:
-#    gredin_cantata.example:
-#        class: %gredin_cantata.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    gredin_cantata.logger:
+        class: %gredin_cantata.logger.class%
+        arguments: [%kernel.root_dir%, %gredin_cantata.logger.filename%]
+
+    gredin_cantata.registration:
+        class: %gredin_cantata.registration.class%
+        arguments: [@doctrine, @gredin_cantata.logger, @mailer]

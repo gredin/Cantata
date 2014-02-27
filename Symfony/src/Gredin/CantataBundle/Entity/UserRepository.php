@@ -9,5 +9,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    public function alreadyExists(User $user)
+    {
 
+    }
 }
