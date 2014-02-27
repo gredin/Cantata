@@ -2,6 +2,8 @@
 
 namespace Gredin\CantataBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,9 +29,15 @@ class User
      * @var string
      *
      * @ORM\Column(type="string", nullable=false, unique=true)
+     *
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 200,
+     *      minMessage = "Adresse email trop courte",
+     *      maxMessage = "Adresse email trop longue"
+     * )
      */
     protected $email;
-
 
     /**
      * Password
@@ -37,6 +45,13 @@ class User
      * @var string
      *
      * @ORM\Column(type="string", nullable=false)
+     *
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 100,
+     *      minMessage = "Trop court",
+     *      maxMessage = "Trop long"
+     * )
      */
     protected $password;
 
