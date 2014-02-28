@@ -13,7 +13,7 @@ class Registration
     private $logger;
     private $mailer;
 
-    public function __construct(Registry $doctrine, Logger $logger, $mailer) // TODO: type hinting for $mailer
+    public function __construct(Registry $doctrine, Logger $logger, \Swift_Mailer $mailer)
     {
         $this->doctrine = $doctrine;
         $this->logger = $logger;
